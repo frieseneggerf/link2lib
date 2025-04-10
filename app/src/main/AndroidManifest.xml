@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Link2Lib"
+        tools:targetApi="35">
+        <activity
+            android:name=".LibrariesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetProxyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:scheme="http" />
+                <data android:host="*.link.springer.com" />
+                <data android:host="*.sciencedirect.com" />
+                <data android:host="*.onlinelibrary.wiley.com" />
+                <data android:host="*.tandfonline.com" />
+                <data android:host="*.journals.sagepub.com" />
+                <data android:host="*.academic.oup.com" />
+                <data android:host="*.nature.com" />
+                <data android:host="*.cell.com" />
+                <data android:host="*.ieeexplore.ieee.org" />
+                <data android:host="*.dl.acm.org" />
+                <data android:host="*.journals.plos.org" />
+                <data android:host="*.biomedcentral.com" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

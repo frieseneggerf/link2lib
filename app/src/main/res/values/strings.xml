@@ -1,0 +1,90 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Main Activity-->
+    <string name="app_name">Link2Lib</string>
+    <string name="app_icon_description">The App Icon. A paper with text on it with a open lock in front of it.</string>
+    <string name="intro_text">Easily access articles and papers licensed by your library.</string>
+    <string name="guide_text">
+        <b>How to use this app</b>\n
+        Many academic libraries provide a so-called proxy prefix which can be added to a link to an article you want to read and - if your library has licensed the content - allows you to login via your library and access it.
+        Check if your library offers something called EZProxy or a proxy prefix.\n\n
+        After setting your librarys proxy url you can pass links to scientific articles behind paywalls to this app in three ways:\n\n
+        Use the system share function to send it to Link2Lib, click the clipboard button in the corner to paste a link from your clipboard or configure certain publishers domains to be automatically opened using this app when clicked.
+    </string>
+    <string name="button_add_proxy">
+        <b>Set Proxy</b>\n
+        Select or add your library\'s proxy url
+    </string>
+    <string name="button_settings">
+        <b>\"Open by Default\" Settings</b>\n
+        Select publisher domains for auto-detection
+    </string>
+    <string name="button_history">
+        <b>History</b>\n
+        Look at your previously accessed urls
+    </string>
+    <string name="button_about">
+        <b>About</b>\n
+        License, Source Code, etc.
+    </string>
+    <string name="proxy_prefix">Active Proxy:\n%1$s</string>
+    <string name="paste_fab_description">Paste url from clipboard</string>
+    <string name="no_text_in_clipboard">No text in clip board</string>
+
+    <!--Set Proxy Activity-->
+    <string name="set_proxy">Set Proxy</string>
+    <string name="tap_to_select">Tap to select</string>
+    <string name="hold_long_delete">Long tap to delete</string>
+    <string name="add">Add</string>
+    <string name="add_new_proxy">Add new proxy</string>
+    <string name="proxy_description">Proxy Description</string>
+    <string name="proxy_url">Proxy URL</string>
+    <string name="ok">OK</string>
+    <string name="added_proxy">Added Proxy</string>
+    <string name="cancel">Cancel</string>
+    <string name="canceled">Canceled</string>
+    <string name="selected_new_proxy">Selected %1$s</string>
+    <string name="no_proxy_selected">No proxy selected</string>
+    <!--Data Handles-->
+    <string name="active_proxy_file_key">active_proxy_file</string>
+    <string name="active_proxy_url">active_proxy_url</string>
+    <string name="active_proxy_desc">active_proxy_desc</string>
+    <string name="default_proxy_url">https://google.com/search?q=</string>
+    <string name="default_proxy_desc">Google Search (Demo)</string>
+    <string name="proxy_list_file">proxy_list.tsv</string>
+    <string name="url_history_file">history.tsv</string>
+
+    <!--History Activity-->
+    <string name="history">History</string>
+    <string name="opening_from_history">Opening from history</string>
+    <string name="copied_url">Copied URL</string>
+    <string name="clear_history">Clear</string>
+    <string name="cleared_history">History cleared</string>
+
+    <!--About Activity-->
+    <string name="about">About</string>
+    <string name="version">Version %1$s</string>
+    <string name="copyright">© 2025 Florian Friesenegger</string>
+    <string name="license" tools:ignore="TypographyOther">
+        Copyright (C) 2025 Florian Friesenegger\n\n
+        This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\n
+        This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\n
+        You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;https://www.gnu.org/licenses/\&gt;.
+    </string>
+    <string name="button_website">
+        &lt;b>My Website&lt;/b>&lt;br>
+        %1$s
+    </string>
+    <string name="website_url">https://friesenegger.xyz</string>
+    <string name="button_source">
+        &lt;b>Source Code&lt;/b>&lt;br>
+        %1$s
+    </string>
+    <string name="button_libraries">
+        &lt;b>Third Party Libraries&lt;/b>&lt;br>
+        Details &amp; Licenses
+    </string>
+    <string name="source_url">https://github.com/frieseneggerf/link2lib</string>
+
+    <!--Libraries Activity-->
+    <string name="libraries">Libraries</string>
+</resources>
