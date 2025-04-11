@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--Main Activity-->
-    <string name="app_name">Link2Lib</string>
+    <string name="app_name">Lib Proxy Helper</string>
     <string name="app_icon_description">The App Icon. A paper with text on it with a open lock in front of it.</string>
     <string name="intro_text">Easily access articles and papers licensed by your library.</string>
     <string name="guide_text">
         <b>How to use this app</b>\n
         Many academic libraries provide a so-called proxy prefix which can be added to a link to an article you want to read and - if your library has licensed the content - allows you to login via your library and access it.
         Check if your library offers something called EZProxy or a proxy prefix.\n\n
-        After setting your librarys proxy url you can pass links to scientific articles behind paywalls to this app in three ways:\n\n
-        Use the system share function to send it to Link2Lib, click the clipboard button in the corner to paste a link from your clipboard or configure certain publishers domains to be automatically opened using this app when clicked.
+        After setting your librarys\' proxy you can pass links to scientific articles behind paywalls to this app in three ways:\n\n
+        Via the system share function, by clicking the clipboard button in the corner to paste a link from your clipboard or by configuring certain publishers domains to be automatically opened using this app when clicked.
     </string>
     <string name="button_add_proxy">
         <b>Set Proxy</b>\n
@@ -63,7 +63,6 @@
     <!--About Activity-->
     <string name="about">About</string>
     <string name="version">Version %1$s</string>
-    <string name="copyright">© 2025 Florian Friesenegger</string>
     <string name="license" tools:ignore="TypographyOther">
         Copyright (C) 2025 Florian Friesenegger\n\n
         This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\n

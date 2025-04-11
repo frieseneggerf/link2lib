@@ -78,7 +78,7 @@ class AboutActivity : AppCompatActivity() {
         }
         textButtonSource.setOnLongClickListener {
             val clipboard = applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip: ClipData = ClipData.newPlainText("App Soucre Code URL", sourceUrl)
+            val clip: ClipData = ClipData.newPlainText("App Source Code URL", sourceUrl)
             clipboard.setPrimaryClip(clip)
             Toast.makeText(this@AboutActivity, getString(R.string.copied_url), Toast.LENGTH_SHORT).show()
             true

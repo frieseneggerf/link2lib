@@ -100,14 +100,12 @@ fun showLicenseDialog(context: Context, license: String, website: Uri? = null) {
     AlertDialog.Builder(context)
         .setView(tv)
         .setPositiveButton(context.getString(R.string.close)) { _, _ ->}
-        .let {
+        .also {
             if (website != null) {
                 it.setNegativeButton(context.getString(R.string.website)) { _, _ ->
                     val browserIntent = Intent(Intent.ACTION_VIEW, website)
                     context.startActivity(browserIntent)
                 }
-            } else {
-                it
             }
         }
         .show()
