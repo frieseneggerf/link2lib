@@ -87,4 +87,7 @@
 
     <!--Libraries Activity-->
     <string name="libraries">Libraries</string>
+    <string name="close">Close</string>
+    <string name="website">Website</string>
+    <string name="no_text">No license text found</string>
 </resources>

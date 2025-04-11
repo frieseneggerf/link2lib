@@ -2,6 +2,8 @@ package de.floriii.link2lib
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.View
@@ -9,8 +11,10 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -67,14 +71,24 @@ class LibrariesActivity : AppCompatActivity() {
         listViewLibraries.adapter = librariesAdapter
 
         listViewLibraries.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
-            val lib = libs.getJSONObject(pos)
-            showLicenseDialog(this@LibrariesActivity, licenses.getJSONObject(lib.getJSONArray("licenses").getString(0)).getString("content"))
+            try {
+                val lib = libs.getJSONObject(pos)
+                val text = licenses.getJSONObject(lib.getJSONArray("licenses").getString(0)).getString("content")
+                val website = try {
+                    lib.getString("website").toUri()
+                } catch (e: JSONException) {
+                    null
+                }
+                showLicenseDialog(this@LibrariesActivity, text, website)
+            } catch (e: JSONException) {
+                Toast.makeText(this@LibrariesActivity, getString(R.string.no_text), Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 }
 
-fun showLicenseDialog(context: Context, license: String) {
+fun showLicenseDialog(context: Context, license: String, website: Uri? = null) {
     val tv = TextView(context).apply {
         text = license
         textAlignment = View.TEXT_ALIGNMENT_CENTER
@@ -85,5 +99,16 @@ fun showLicenseDialog(context: Context, license: String) {
     }
     AlertDialog.Builder(context)
         .setView(tv)
+        .setPositiveButton(context.getString(R.string.close)) { _, _ ->}
+        .let {
+            if (website != null) {
+                it.setNegativeButton(context.getString(R.string.website)) { _, _ ->
+                    val browserIntent = Intent(Intent.ACTION_VIEW, website)
+                    context.startActivity(browserIntent)
+                }
+            } else {
+                it
+            }
+        }
         .show()
 }
