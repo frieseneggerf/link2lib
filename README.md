@@ -2,7 +2,7 @@
 
 <img alt="App Icon, paper with lock" src="/metadata/en-US/images/icon.png" align="left" width="180">
 
-**Lib Proxy Helper** lets you easily access paywalled research articles, provided (1) **your library has licenced them** and (2) offers access via a proxy prefix solution like EZProxy.
+**Lib Proxy Helper** lets you easily access paywalled research articles, provided (1) **your library has licensed them** and (2) offers access via a proxy prefix solution like EZProxy.
 
 <br>
 <br>
