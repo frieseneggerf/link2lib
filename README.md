@@ -4,7 +4,8 @@
 
 **Lib Proxy Helper** lets you easily access paywalled research articles, provided (1) **your library has licensed them** and (2) offers access via a proxy prefix solution like EZProxy.
 
-<br>
+This app WILL NOT let you access articles not licensed by your library, it only makes the access easier.
+
 <br>
 <br>
 <br>
