@@ -1,4 +1,4 @@
-# Lib Proxy Helper [![Latest Version](https://img.shields.io/github/v/release/frieseneggerf/link2lib)](https://github.com/frieseneggerf/releases/latest)
+# Lib Proxy Helper [![Latest Version](https://img.shields.io/github/v/release/frieseneggerf/link2lib)](https://github.com/frieseneggerf/link2lib/releases/latest)
 
 <img alt="App Icon, paper with lock" src="/metadata/en-US/images/icon.png" align="left" width="180">
 
