@@ -12,8 +12,8 @@ android {
         applicationId = "de.floriii.link2lib"
         minSdk = 28
         targetSdk = 35
-        versionCode = 2
-        versionName = "0.2-alpha"
+        versionCode = 3
+        versionName = "1.0-beta"
         setProperty("archivesBaseName", "link2lib-v$versionName")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

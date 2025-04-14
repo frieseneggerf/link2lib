@@ -4,4 +4,3 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     id("com.mikepenz.aboutlibraries.plugin") version "11.6.3" apply false
 }
-
