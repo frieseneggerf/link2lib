@@ -7,6 +7,7 @@
 <br>
 <br>
 <br>
+<br>
 
 ## How it works
 Many academic libraries provide off-campus access to their licensed content for their users via a proxy server. This is usually a simple url snippet (e.g. `https://proxy.university.example/login?q=`) that can be prepended to a link to an article you want to access. You are then redirected to login at your library and can read the article. All this app does is semi-automate the process of prepending the proxy url.
