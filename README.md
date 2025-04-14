@@ -20,7 +20,7 @@ Many academic libraries provide off-campus access to their licensed content for 
 - Doesn't require you to grant any permissions and can't access the internet itself
 - Free and open source
 
-## Screenshot
+## Screenshots
 [<img src="/metadata/en-US/images/phoneScreenshots/1.png" width="200">](/metadata/en-US/images/phoneScreenshots/1.png)
 [<img src="/metadata/en-US/images/phoneScreenshots/2.png" width="200">](/metadata/en-US/images/phoneScreenshots/2.png)
 
