@@ -2,15 +2,14 @@ package de.floriii.link2lib
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.AdapterView.OnItemLongClickListener
-import android.widget.EditText
 import android.widget.SimpleAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import de.floriii.link2lib.databinding.ActivitySetProxyBinding
+import de.floriii.link2lib.databinding.AddProxyDialogBinding
 import java.io.File
 
 
@@ -27,15 +26,13 @@ class SetProxyActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonNewProxy.setOnClickListener {
-            val dialogView = LayoutInflater.from(this@SetProxyActivity).inflate(R.layout.add_proxy_dialog, null)
-            val editTextProxyDesc = dialogView.findViewById<EditText>(R.id.editTextProxyDesc)
-            val editTextProxyUrl = dialogView.findViewById<EditText>(R.id.editTextProxyUrl)
+            val dialogBinding = AddProxyDialogBinding.inflate(layoutInflater)
             AlertDialog.Builder(this@SetProxyActivity)
                 .setTitle(getString(R.string.add_new_proxy))
-                .setView(dialogView)
+                .setView(dialogBinding.root)
                 .setPositiveButton(getString(R.string.ok)) { _, _ ->
-                    val proxyDesc = editTextProxyDesc.text.toString().filterNot{ char -> char == Char(9)}
-                    val proxyUrl = editTextProxyUrl.text.toString().replace(Char(9).toString(), "%09")
+                    val proxyDesc = dialogBinding.editTextProxyDesc.text.toString().filterNot{ char -> char == Char(9)}
+                    val proxyUrl = dialogBinding.editTextProxyUrl.text.toString().replace(Char(9).toString(), "%09")
                     val rowMap: MutableMap<String, String> = mutableMapOf()
                     rowMap["description"] = proxyDesc
                     rowMap["proxy_url"] = proxyUrl
