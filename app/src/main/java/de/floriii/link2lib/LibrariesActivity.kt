@@ -8,28 +8,27 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import de.floriii.link2lib.databinding.ActivityLibrariesBinding
 import org.json.JSONException
 import org.json.JSONObject
 
 class LibrariesActivity : AppCompatActivity() {
 
-    private lateinit var listViewLibraries: ListView
+    private lateinit var binding: ActivityLibrariesBinding
     private lateinit var librariesAdapter: SimpleAdapter
     private lateinit var listLibraries: MutableList<MutableMap<String, String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_libraries)
-
-        listViewLibraries = findViewById(R.id.listViewLibraries)
+        binding = ActivityLibrariesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         listLibraries = mutableListOf()
         librariesAdapter = SimpleAdapter(this, listLibraries,
@@ -68,9 +67,9 @@ class LibrariesActivity : AppCompatActivity() {
             }
             listLibraries.add(rowMap)
         }
-        listViewLibraries.adapter = librariesAdapter
+        binding.listViewLibraries.adapter = librariesAdapter
 
-        listViewLibraries.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
+        binding.listViewLibraries.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
             try {
                 val lib = libs.getJSONObject(pos)
                 val text = licenses.getJSONObject(lib.getJSONArray("licenses").getString(0)).getString("content")

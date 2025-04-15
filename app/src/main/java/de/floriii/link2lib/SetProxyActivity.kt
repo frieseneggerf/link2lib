@@ -6,35 +6,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.AdapterView.OnItemLongClickListener
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
 import android.widget.SimpleAdapter
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import de.floriii.link2lib.databinding.ActivitySetProxyBinding
 import java.io.File
 
 
 class SetProxyActivity : AppCompatActivity() {
 
-    private lateinit var buttonNewProxy: Button
-    private lateinit var listViewProxies: ListView
+    private lateinit var binding: ActivitySetProxyBinding
     private lateinit var proxyAdapter: SimpleAdapter
     private lateinit var listProxyList: MutableList<MutableMap<String, String>>
-    private lateinit var textSelectedProxy: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_proxy)
+        binding = ActivitySetProxyBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        buttonNewProxy = findViewById(R.id.buttonNewProxy)
-        listViewProxies = findViewById(R.id.listViewProxies)
-        textSelectedProxy = findViewById(R.id.textSelectedProxy)
-
-        buttonNewProxy.setOnClickListener {
+        binding.buttonNewProxy.setOnClickListener {
             val dialogView = LayoutInflater.from(this@SetProxyActivity).inflate(R.layout.add_proxy_dialog, null)
             val editTextProxyDesc = dialogView.findViewById<EditText>(R.id.editTextProxyDesc)
             val editTextProxyUrl = dialogView.findViewById<EditText>(R.id.editTextProxyUrl)
@@ -87,18 +80,18 @@ class SetProxyActivity : AppCompatActivity() {
             rowMap["proxy_url"] = it.value
             listProxyList.add(rowMap)
         }
-        listViewProxies.adapter = proxyAdapter
+        binding.listViewProxies.adapter = proxyAdapter
 
-        listViewProxies.onItemClickListener = OnItemClickListener {_, _, pos, _ ->
+        binding.listViewProxies.onItemClickListener = OnItemClickListener {_, _, pos, _ ->
             val selectedProxy = listProxyList[pos]
             if (selectedProxy["proxy_url"] != null) {
                 Toast.makeText(this@SetProxyActivity, getString(R.string.selected_new_proxy).format(selectedProxy["description"]), Toast.LENGTH_SHORT).show()
                 setActiveProxy(this@SetProxyActivity, selectedProxy["proxy_url"], selectedProxy["description"])
-                textSelectedProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this@SetProxyActivity))
+                binding.textSelectedProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this@SetProxyActivity))
             }
         }
 
-        listViewProxies.onItemLongClickListener = OnItemLongClickListener {_, _, pos, _ ->
+        binding.listViewProxies.onItemLongClickListener = OnItemLongClickListener {_, _, pos, _ ->
             listProxyList.removeAt(pos)
             saveProxyList(applicationContext, listProxyList)
             proxyAdapter.notifyDataSetChanged()
@@ -106,7 +99,7 @@ class SetProxyActivity : AppCompatActivity() {
         }
 
 
-        textSelectedProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this))
+        binding.textSelectedProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this))
     }
 }
 

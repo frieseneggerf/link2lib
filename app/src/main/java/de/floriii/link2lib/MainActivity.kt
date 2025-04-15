@@ -8,11 +8,9 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 import android.text.method.ScrollingMovementMethod
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.floriii.link2lib.databinding.ActivityMainBinding
 import androidx.core.net.toUri
 import java.time.LocalDateTime
@@ -21,13 +19,6 @@ import java.time.format.DateTimeFormatter
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var textProxy: TextView
-    private lateinit var textViewGuide: TextView
-    private lateinit var textButtonAddProxy: TextView
-    private lateinit var textButtonHistory: TextView
-    private lateinit var textButtonSettings: TextView
-    private lateinit var textButtonAbout: TextView
-    private lateinit var fabPaste: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -54,27 +45,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        textProxy = findViewById(R.id.textProxy)
-        fabPaste = findViewById(R.id.fabPaste)
-        textViewGuide = findViewById(R.id.textViewGuide)
-        textButtonAddProxy = findViewById(R.id.textButtonAddProxy)
-        textButtonHistory = findViewById(R.id.textButtonHistory)
-        textButtonSettings = findViewById(R.id.textButtonSettings)
-        textButtonAbout = findViewById(R.id.textButtonAbout)
+        binding.textViewGuide.movementMethod = ScrollingMovementMethod()
 
-        textViewGuide.movementMethod = ScrollingMovementMethod()
-
-        textButtonAddProxy.setOnClickListener {
+        binding.textButtonAddProxy.setOnClickListener {
             val intent = Intent(this@MainActivity, SetProxyActivity::class.java)
             startActivity(intent)
         }
 
-        textButtonHistory.setOnClickListener {
+        binding.textButtonHistory.setOnClickListener {
             val intent = Intent(this@MainActivity, HistoryActivity::class.java)
             startActivity(intent)
         }
 
-        textButtonSettings.setOnClickListener {
+        binding.textButtonSettings.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 31) {
                 val intent = Intent(Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS, ("package:" + applicationContext.packageName).toUri())
                 startActivity(intent)
@@ -84,12 +67,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        textButtonAbout.setOnClickListener {
+        binding.textButtonAbout.setOnClickListener {
             val intent = Intent(this@MainActivity, AboutActivity::class.java)
             startActivity(intent)
         }
 
-        fabPaste.setOnClickListener{
+        binding.fabPaste.setOnClickListener{
             getClipboardText(applicationContext)?.let{ clipText ->
                 logUrl(applicationContext, clipText)
                 openUrlInBrowser(this@MainActivity, clipText)
@@ -100,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        textProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this))
+        binding.textProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this))
     }
 }
 

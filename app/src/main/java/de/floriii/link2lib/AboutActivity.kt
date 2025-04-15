@@ -10,44 +10,32 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
+import de.floriii.link2lib.databinding.ActivityAboutBinding
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class AboutActivity : AppCompatActivity() {
 
-    private lateinit var imageAppIcon: ImageView
-    private lateinit var textViewAppVersion: TextView
-    private lateinit var textViewLicense: TextView
-    private lateinit var textButtonWebsite: TextView
-    private lateinit var textButtonSource: TextView
-    private lateinit var textButtonLibraries: TextView
+    private lateinit var binding: ActivityAboutBinding
     private lateinit var license: SpannableString
     private var eggCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
-
-        imageAppIcon = findViewById(R.id.imageView2)
-        textViewAppVersion = findViewById(R.id.textViewAppVersion)
-        textViewLicense = findViewById(R.id.textViewLicense)
-        textButtonWebsite = findViewById(R.id.textButtonWebsite)
-        textButtonSource = findViewById(R.id.textButtonSource)
-        textButtonLibraries = findViewById(R.id.textButtonLibraries)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
-        textViewAppVersion.text = getString(R.string.version, versionName)
+        binding.textViewAppVersion.text = getString(R.string.version, versionName)
 
-        textViewLicense.movementMethod = ScrollingMovementMethod()
-        textViewLicense.setOnClickListener{
+        binding.textViewLicense.movementMethod = ScrollingMovementMethod()
+        binding.textViewLicense.setOnClickListener{
             val license = resources.openRawResource(R.raw.license).
                 bufferedReader().readText().
                 replace(Regex("(?<!\\n)\\n(?!\\n|\\s)|(?<=\\n)[ \\t]+"), " ") //remove single line breaks (except if followed by spaces) and leading spaces in lines
@@ -56,12 +44,12 @@ class AboutActivity : AppCompatActivity() {
 
         val websiteUrl = getString(R.string.website_url)
         val webForm = HtmlCompat.fromHtml(getString(R.string.button_website).format(websiteUrl), HtmlCompat.FROM_HTML_MODE_COMPACT)
-        textButtonWebsite.text = webForm
-        textButtonWebsite.setOnClickListener {
+        binding.textButtonWebsite.text = webForm
+        binding.textButtonWebsite.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, websiteUrl.toUri())
             startActivity(intent)
         }
-        textButtonWebsite.setOnLongClickListener {
+        binding.textButtonWebsite.setOnLongClickListener {
             val clipboard = applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip: ClipData = ClipData.newPlainText("Personal Website URL", websiteUrl)
             clipboard.setPrimaryClip(clip)
@@ -71,12 +59,12 @@ class AboutActivity : AppCompatActivity() {
 
         val sourceUrl = getString(R.string.source_url)
         val sourceForm = HtmlCompat.fromHtml(getString(R.string.button_source).format(sourceUrl), HtmlCompat.FROM_HTML_MODE_COMPACT)
-        textButtonSource.text = sourceForm
-        textButtonSource.setOnClickListener {
+        binding.textButtonSource.text = sourceForm
+        binding.textButtonSource.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, sourceUrl.toUri())
             startActivity(intent)
         }
-        textButtonSource.setOnLongClickListener {
+        binding.textButtonSource.setOnLongClickListener {
             val clipboard = applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip: ClipData = ClipData.newPlainText("App Source Code URL", sourceUrl)
             clipboard.setPrimaryClip(clip)
@@ -84,8 +72,8 @@ class AboutActivity : AppCompatActivity() {
             true
         }
 
-        textButtonLibraries.text = HtmlCompat.fromHtml(getString(R.string.button_libraries), HtmlCompat.FROM_HTML_MODE_COMPACT)
-        textButtonLibraries.setOnClickListener {
+        binding.textButtonLibraries.text = HtmlCompat.fromHtml(getString(R.string.button_libraries), HtmlCompat.FROM_HTML_MODE_COMPACT)
+        binding.textButtonLibraries.setOnClickListener {
             val intent = Intent(this@AboutActivity, LibrariesActivity::class.java)
             startActivity(intent)
         }
@@ -104,13 +92,13 @@ class AboutActivity : AppCompatActivity() {
         words[lastPos] = pos
         val colors = arrayOf(Color.RED, Color.BLUE, Color.CYAN, Color.YELLOW, Color.MAGENTA, Color.GREEN)
 
-        imageAppIcon.setOnClickListener {
+        binding.imageAppIcon.setOnClickListener {
             eggCounter++
             if (eggCounter >= 3 && words.isNotEmpty()) {
                 val k = words.keys.random()
                 license.setSpan(ForegroundColorSpan(colors[Random.nextInt(0..5)]), k, words[k]!!, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
                 words.remove(k)
-                textViewLicense.text = license
+                binding.textViewLicense.text = license
             }
         }
     }
