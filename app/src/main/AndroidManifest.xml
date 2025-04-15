@@ -11,18 +11,6 @@
         android:theme="@style/Theme.Link2Lib"
         tools:targetApi="35">
         <activity
-            android:name=".LibrariesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SetProxyActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -37,7 +25,7 @@
 
                 <data android:mimeType="text/plain" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
+            <intent-filter android:autoVerify="false">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -59,6 +47,18 @@
                 <data android:host="*.biomedcentral.com" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SetProxyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LibrariesActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
