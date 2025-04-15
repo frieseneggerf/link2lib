@@ -1,15 +1,8 @@
 package de.floriii.link2lib
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
-import android.view.View
 import android.widget.AdapterView
 import android.widget.SimpleAdapter
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -85,27 +78,4 @@ class LibrariesActivity : AppCompatActivity() {
         }
 
     }
-}
-
-fun showLicenseDialog(context: Context, license: String, website: Uri? = null) {
-    val tv = TextView(context).apply {
-        text = license
-        textAlignment = View.TEXT_ALIGNMENT_CENTER
-        textSize = 11F
-        setPadding(8, 8, 8, 8)
-        isVerticalScrollBarEnabled = true
-        movementMethod = ScrollingMovementMethod()
-    }
-    AlertDialog.Builder(context)
-        .setView(tv)
-        .setPositiveButton(context.getString(R.string.close)) { _, _ ->}
-        .also {
-            if (website != null) {
-                it.setNegativeButton(context.getString(R.string.website)) { _, _ ->
-                    val browserIntent = Intent(Intent.ACTION_VIEW, website)
-                    context.startActivity(browserIntent)
-                }
-            }
-        }
-        .show()
 }

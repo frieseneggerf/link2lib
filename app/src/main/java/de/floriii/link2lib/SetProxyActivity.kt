@@ -1,7 +1,6 @@
 package de.floriii.link2lib
 
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.AdapterView.OnItemClickListener
@@ -100,16 +99,5 @@ class SetProxyActivity : AppCompatActivity() {
 
 
         binding.textSelectedProxy.text = getString(R.string.proxy_prefix).format(getActiveProxyDesc(this))
-    }
-}
-
-
-private fun saveProxyList(context: Context, listProxyList: MutableList<MutableMap<String, String>>) {
-    var toSave = ""
-    for (p in listProxyList) {
-        toSave = toSave.plus(p["description"] + Char(9) + p["proxy_url"] + "\n")
-    }
-    context.openFileOutput(context.getString(R.string.proxy_list_file), Context.MODE_PRIVATE).use {
-        it.write(toSave.toByteArray())
     }
 }
