@@ -1,10 +1,11 @@
-# Lib Proxy Helper [![Latest Version](https://img.shields.io/github/v/release/frieseneggerf/link2lib)](https://github.com/frieseneggerf/releases/latest)
+# Lib Proxy Helper [![Latest Version](https://img.shields.io/github/v/release/frieseneggerf/link2lib)](https://github.com/frieseneggerf/link2lib/releases/latest)
 
 <img alt="App Icon, paper with lock" src="/metadata/en-US/images/icon.png" align="left" width="180">
 
-**Lib Proxy Helper** lets you easily access paywalled research articles, provided (1) **your library has licenced them** and (2) offers access via a proxy prefix solution like EZProxy.
+**Lib Proxy Helper** lets you easily access paywalled research articles, provided (1) **your library has licensed them** and (2) offers access via a proxy prefix solution like EZProxy.
 
-<br>
+This app WILL NOT give you access to articles that aren't already licensed by your library, it only makes the access easier/more comfortable.
+
 <br>
 <br>
 <br>
@@ -20,7 +21,7 @@ Many academic libraries provide off-campus access to their licensed content for 
 - Doesn't require you to grant any permissions and can't access the internet itself
 - Free and open source
 
-## Screenshot
+## Screenshots
 [<img src="/metadata/en-US/images/phoneScreenshots/1.png" width="200">](/metadata/en-US/images/phoneScreenshots/1.png)
 [<img src="/metadata/en-US/images/phoneScreenshots/2.png" width="200">](/metadata/en-US/images/phoneScreenshots/2.png)
 
