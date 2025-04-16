@@ -9,6 +9,9 @@ This Privacy Policy is intended to clarify how your data is handled by the app.
 The app does not collect, store, or share any personal data. No names, emails, IP addresses, 
 or any identifying information of users are accessed or stored.
 
+A history of links processed via the app is kept for your convenience, this history is never
+sent off your device and can be cleared in the "History" section.
+
 ## 2. Proxy Functionality
 The app's primary function is to prepend a proxy URL (manually provided by the user) to
 academic article links. These links are opened using the user's chosen browser or other
