@@ -46,7 +46,8 @@ class SetProxyActivity : AppCompatActivity() {
                     saveProxyList(applicationContext, listProxyList)
                     Toast.makeText(this@SetProxyActivity, getString(R.string.added_proxy), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton(getString(R.string.cancel)) {_, _ ->
+                .setNegativeButton(getString(R.string.cancel)) {_, _ -> }
+                .setOnDismissListener {
                     Toast.makeText(this@SetProxyActivity, getString(R.string.canceled), Toast.LENGTH_SHORT).show()
                 }
                 .show()
