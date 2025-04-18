@@ -37,17 +37,23 @@ class SetProxyActivity : AppCompatActivity() {
                 .setPositiveButton(getString(R.string.ok)) { _, _ ->
                     val proxyDesc = dialogBinding.editTextProxyDesc.text.toString().filterNot{ char -> char == Char(9)}
                     val proxyUrl = dialogBinding.editTextProxyUrl.text.toString().replace(Char(9).toString(), "%09")
-                    val rowMap: MutableMap<String, String> = mutableMapOf()
-                    rowMap["description"] = proxyDesc
-                    rowMap["proxy_url"] = proxyUrl
-                    listProxyList.add(rowMap)
-                    proxyAdapter.notifyDataSetChanged()
+                    if (proxyDesc.isNotEmpty() && proxyUrl.isNotEmpty()) {
+                        val rowMap: MutableMap<String, String> = mutableMapOf()
+                        rowMap["description"] = proxyDesc
+                        rowMap["proxy_url"] = proxyUrl
+                        listProxyList.add(rowMap)
+                        proxyAdapter.notifyDataSetChanged()
 
-                    saveProxyList(applicationContext, listProxyList)
-                    Toast.makeText(this@SetProxyActivity, getString(R.string.added_proxy), Toast.LENGTH_SHORT).show()
+                        saveProxyList(applicationContext, listProxyList)
+                        Toast.makeText(this@SetProxyActivity, getString(R.string.added_proxy), Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@SetProxyActivity, getString(R.string.canceled), Toast.LENGTH_SHORT).show()
+                    }
                 }
-                .setNegativeButton(getString(R.string.cancel)) {_, _ -> }
-                .setOnDismissListener {
+                .setNegativeButton(getString(R.string.cancel)) {_, _ ->
+                    Toast.makeText(this@SetProxyActivity, getString(R.string.canceled), Toast.LENGTH_SHORT).show()
+                }
+                .setOnCancelListener {
                     Toast.makeText(this@SetProxyActivity, getString(R.string.canceled), Toast.LENGTH_SHORT).show()
                 }
                 .show()
