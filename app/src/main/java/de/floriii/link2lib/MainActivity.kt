@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
-import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -39,8 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.textViewGuide.movementMethod = ScrollingMovementMethod()
 
         binding.textButtonAddProxy.setOnClickListener {
             val intent = Intent(this@MainActivity, SetProxyActivity::class.java)

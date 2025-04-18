@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -38,7 +37,6 @@ class AboutActivity : AppCompatActivity() {
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         binding.textViewAppVersion.text = getString(R.string.version, versionName)
 
-        binding.textViewLicense.movementMethod = ScrollingMovementMethod()
         binding.textViewLicense.setOnClickListener{
             val license = resources.openRawResource(R.raw.license).
                 bufferedReader().readText().
