@@ -28,7 +28,7 @@
     </string>
     <string name="proxy_prefix">Active Proxy:\n%1$s</string>
     <string name="paste_fab_description">Paste url from clipboard</string>
-    <string name="no_text_in_clipboard">No text in clip board</string>
+    <string name="no_text_in_clipboard">No text in clipboard</string>
 
     <!--Set Proxy Activity-->
     <string name="set_proxy">Set Proxy</string>
