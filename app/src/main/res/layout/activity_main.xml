@@ -55,7 +55,7 @@
                 android:contentDescription="@string/paste_fab_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="?attr/actionModePasteDrawable" />
+                app:srcCompat="@drawable/content_paste_24dp" />
 
             <TextView
                 android:id="@+id/textViewGuide"
