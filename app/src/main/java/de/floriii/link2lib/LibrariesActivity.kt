@@ -23,6 +23,10 @@ class LibrariesActivity : AppCompatActivity() {
         binding = ActivityLibrariesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.materialToolbar5.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         listLibraries = mutableListOf()
         librariesAdapter = SimpleAdapter(this, listLibraries,
             R.layout.library_info_card, arrayOf("name", "org", "license", "version"), intArrayOf(

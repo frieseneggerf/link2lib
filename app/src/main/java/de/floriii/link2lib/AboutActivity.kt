@@ -31,6 +31,10 @@ class AboutActivity : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.materialToolbar4.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         binding.textViewAppVersion.text = getString(R.string.version, versionName)
 

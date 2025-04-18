@@ -25,6 +25,10 @@ class SetProxyActivity : AppCompatActivity() {
         binding = ActivitySetProxyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.materialToolbar2.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         binding.buttonNewProxy.setOnClickListener {
             val dialogBinding = AddProxyDialogBinding.inflate(layoutInflater)
             AlertDialog.Builder(this@SetProxyActivity)

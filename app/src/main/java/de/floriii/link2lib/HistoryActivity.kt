@@ -25,6 +25,10 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.materialToolbar3.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         val mapDateUrl: MutableMap<String, String> = mutableMapOf()
         val historyFile = File(filesDir, getString(R.string.url_history_file))
         if (historyFile.exists()) {
