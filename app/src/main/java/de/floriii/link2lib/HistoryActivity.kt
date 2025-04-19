@@ -29,29 +29,24 @@ class HistoryActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        val mapDateUrl: MutableMap<String, String> = mutableMapOf()
         val historyFile = File(filesDir, getString(R.string.url_history_file))
+        listHistory = mutableListOf()
         if (historyFile.exists()) {
             openFileInput(getString(R.string.url_history_file)).bufferedReader().useLines { lines ->
                 for (l in lines) {
-                    mapDateUrl[l.split(Char(9))[0]] = l.split(Char(9))[1]
+                    val rowMap: MutableMap<String, String> = mutableMapOf()
+                    val data = l.split(Char(9))
+                    rowMap["time"] = data[0]
+                    rowMap["target_url"] = data[1]
+                    listHistory.add(0, rowMap)
                 }
             }
         }
-
-        listHistory = mutableListOf()
         historyAdapter = SimpleAdapter(this, listHistory,
             R.layout.list_item_twoline, arrayOf("time", "target_url"), intArrayOf(
                 R.id.textListitemMain,
                 R.id.textListitemSub
             ))
-        mapDateUrl.entries.forEach {
-            val rowMap: MutableMap<String, String> = mutableMapOf()
-            rowMap["time"] = it.key
-            rowMap["target_url"] = it.value
-            listHistory.add(rowMap)
-        }
-
         binding.listViewHistory.adapter = historyAdapter
 
         binding.listViewHistory.onItemClickListener = OnItemClickListener {_, _, pos, _ ->
