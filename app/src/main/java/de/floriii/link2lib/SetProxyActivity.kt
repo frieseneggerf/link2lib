@@ -59,34 +59,26 @@ class SetProxyActivity : AppCompatActivity() {
                 .show()
         }
 
-        val mapDescrUrl: MutableMap<String, String> = mutableMapOf()
         val proxyFile = File(filesDir, getString(R.string.proxy_list_file))
+        listProxyList = mutableListOf()
         if (!proxyFile.exists()) {
-            resources.openRawResource(R.raw.default_proxies).bufferedReader().useLines { lines ->
-                for (l in lines) {
-                    mapDescrUrl[l.split(Char(9))[0]] = l.split(Char(9))[1]
-                }
-            }
+            resources.openRawResource(R.raw.default_proxies).bufferedReader()
         } else {
-            openFileInput(getString(R.string.proxy_list_file)).bufferedReader().useLines { lines ->
-                for (l in lines) {
-                    mapDescrUrl[l.split(Char(9))[0]] = l.split(Char(9))[1]
-                }
+            openFileInput(proxyFile.name).bufferedReader()
+        }.useLines { lines ->
+            for (l in lines) {
+                val data = l.split(Char(9))
+                val rowMap: MutableMap<String, String> = mutableMapOf()
+                rowMap["description"] = data[0]
+                rowMap["proxy_url"] = data[1]
+                listProxyList.add(rowMap)
             }
         }
-
-        listProxyList = mutableListOf()
         proxyAdapter = SimpleAdapter(this, listProxyList,
             R.layout.list_item_twoline, arrayOf("description", "proxy_url"), intArrayOf(
                 R.id.textListitemMain,
                 R.id.textListitemSub
             ))
-        mapDescrUrl.entries.forEach {
-            val rowMap: MutableMap<String, String> = mutableMapOf()
-            rowMap["description"] = it.key
-            rowMap["proxy_url"] = it.value
-            listProxyList.add(rowMap)
-        }
         binding.listViewProxies.adapter = proxyAdapter
 
         binding.listViewProxies.onItemClickListener = OnItemClickListener {_, _, pos, _ ->

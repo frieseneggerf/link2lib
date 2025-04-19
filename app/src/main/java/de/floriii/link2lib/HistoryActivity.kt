@@ -32,7 +32,7 @@ class HistoryActivity : AppCompatActivity() {
         val historyFile = File(filesDir, getString(R.string.url_history_file))
         listHistory = mutableListOf()
         if (historyFile.exists()) {
-            openFileInput(getString(R.string.url_history_file)).bufferedReader().useLines { lines ->
+            openFileInput(historyFile.name).bufferedReader().useLines { lines ->
                 for (l in lines) {
                     val rowMap: MutableMap<String, String> = mutableMapOf()
                     val data = l.split(Char(9))
