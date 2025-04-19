@@ -28,14 +28,6 @@ class LibrariesActivity : AppCompatActivity() {
         }
 
         listLibraries = mutableListOf()
-        librariesAdapter = SimpleAdapter(this, listLibraries,
-            R.layout.library_info_card, arrayOf("name", "org", "license", "version"), intArrayOf(
-                R.id.textViewName,
-                R.id.textViewOrg,
-                R.id.textViewLic,
-                R.id.textViewVersion
-            ))
-
         val jsonData = JSONObject(resources.openRawResource(R.raw.aboutlibraries).bufferedReader().readText())
         val licenses = jsonData.getJSONObject("licenses")
         val libs = jsonData.getJSONArray("libraries")
@@ -64,6 +56,13 @@ class LibrariesActivity : AppCompatActivity() {
             }
             listLibraries.add(rowMap)
         }
+        librariesAdapter = SimpleAdapter(this, listLibraries,
+            R.layout.library_info_card, arrayOf("name", "org", "license", "version"), intArrayOf(
+                R.id.textViewName,
+                R.id.textViewOrg,
+                R.id.textViewLic,
+                R.id.textViewVersion
+            ))
         binding.listViewLibraries.adapter = librariesAdapter
 
         binding.listViewLibraries.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
